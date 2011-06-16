@@ -1,0 +1,9 @@
+List testList testListPassword
+List test testPassword
+List test2 testPassword
+List test3 testPassword
+List test4 testPassword
+Email mamabirdlist@gmail.com
+ListProcEmail mamabirdlist@gmail.com
+AlsoAddTo test3
+AlsoAddTo test4
