@@ -37,8 +37,12 @@ import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableRowSorter;
+
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Component;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class TableFilterDemo extends JPanel {
     private boolean DEBUG = false;
@@ -46,6 +50,7 @@ public class TableFilterDemo extends JPanel {
     private JTextField filterText;
     private JTextField statusText;
     private TableRowSorter<MyTableModel> sorter;
+    public InboxReader inboxReader = new InboxReader();
 
     public TableFilterDemo(String[] columns, Object[][] d) {
         super();
@@ -66,7 +71,8 @@ public class TableFilterDemo extends JPanel {
         //When selection changes, provide user with row numbers for
         //both view and model.
         table.getSelectionModel().addListSelectionListener(
-                new ListSelectionListener() {
+                
+        		new ListSelectionListener() {
                     public void valueChanged(ListSelectionEvent event) {
                         int viewRow = table.getSelectedRow();
                         if (viewRow < 0) {
@@ -74,8 +80,8 @@ public class TableFilterDemo extends JPanel {
                             statusText.setText("");
                         } else {
                             int modelRow = table.convertRowIndexToModel(viewRow);
-                            statusText.setText(String.format("Selected Row in view: %d. " + "Selected Row in model: %d.", viewRow, modelRow));
-                            System.out.println("value changed, status text:"+statusText.getText());
+                            //statusText.setText(String.format("Selected Row in view: %d. " + "Selected Row in model: %d.", viewRow, modelRow));
+                            //System.out.println("value changed, status text:"+statusText.getText());
                         }
                     }
                 }
@@ -214,11 +220,16 @@ public class TableFilterDemo extends JPanel {
 
             data[row][col] = value;
             fireTableCellUpdated(row, col);
-
+            System.out.println("List:"+ this.columnNames[col] + " Email:"+this.data[row][1] + " to:" + value);
+            String email = (String) this.data[row][1];
+            String name = (String) this.data[row][0];
+            EmailList list = InboxReader.findList(this.columnNames[col]);
+            InboxReader.addToList(list, email, name, false);
             if (DEBUG) {
                 System.out.println("New value of data:");
                 printDebugData();
             }
+            
         }
 
         private void printDebugData() {
@@ -244,8 +255,8 @@ public class TableFilterDemo extends JPanel {
     public static void createAndShowGUI(String[] columns, Object[][] d) {
         //Create and set up the window.
         JFrame frame = new JFrame("List Proc Manager");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
         //Create and set up the content pane.
         TableFilterDemo newContentPane = new TableFilterDemo(columns, d);
         newContentPane.setOpaque(true); //content panes must be opaque

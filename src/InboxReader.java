@@ -69,6 +69,12 @@ public class InboxReader {
 
 
 	static void startConsole() throws Exception {
+		
+        //try {
+		//    new Console();
+		//} 
+		//catch (IOException e) {
+	    //	}
 		//TODO:extract to startEmailConnection()
 		props.setProperty("mail.store.protocol", "imaps");
 		
@@ -277,8 +283,7 @@ public class InboxReader {
 
 	}
 //TODO:Finish implementation
-	static void createAndShowGUI() {
-		
+	static void createAndShowGUI() {		
         Object[][] data = getMemberDataForGUI();
         Vector<String> columnNamesVector = new Vector<String>();
         columnNamesVector.add("Name");
