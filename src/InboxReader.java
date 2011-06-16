@@ -33,9 +33,6 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import net.infonode.gui.laf.InfoNodeLookAndFeel;
-import net.infonode.gui.laf.InfoNodeLookAndFeelTheme;
-
 public class InboxReader {
 	
 	private static final String SMTP_HOST_NAME = "smtp.gmail.com";
@@ -43,6 +40,7 @@ public class InboxReader {
 	public static String SMTP_AUTH_PWD = "";
 	static Properties props = System.getProperties();
 	static EmailList currentList;
+	//Name of config file without .txt on the end (ex. configTest)
 	static Config config= new Config("config");
 	static Vector<EmailList> lists;// = config.lists;
 	//static Vector<String> alsoAddTo = config.alsoAddTo;
