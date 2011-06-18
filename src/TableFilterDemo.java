@@ -256,7 +256,6 @@ public class TableFilterDemo extends JPanel {
         //Create and set up the window.
         JFrame frame = new JFrame("List Proc Manager");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
         //Create and set up the content pane.
         TableFilterDemo newContentPane = new TableFilterDemo(columns, d);
         newContentPane.setOpaque(true); //content panes must be opaque
