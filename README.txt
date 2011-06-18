@@ -1,4 +1,4 @@
-This was a large hackfest, not complete. I'll make a readme if anyone is interseted.
+This was a large hackfest, code is terrible not complete but it works. I'll make a readme if anyone is interseted.
 
 ---Sample config file setup
 	//This file is not used, it is just for demo purposes
