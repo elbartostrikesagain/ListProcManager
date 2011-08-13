@@ -57,8 +57,7 @@ public class InboxReader {
 	}
 
 	public static void main(String args[]) throws Exception {
-		 System.out.println(SMTP_AUTH_USER + " config.email:"+config.email);
-		 loadLookAndFeel();
+		loadLookAndFeel();
 		LoginDialog test = new LoginDialog(config.email);
 		SMTP_AUTH_PWD = test.password;
 
@@ -81,12 +80,14 @@ public class InboxReader {
 		try {
 			Session session = Session.getDefaultInstance(props, null);
 			Store store = session.getStore("imaps");
+			System.out.println("...Connecting to "+config.email);
 			store.connect("imap.gmail.com", config.email, SMTP_AUTH_PWD);
-			System.out.println(store);
+			System.out.println("...Opening Inbox folder");
 			Folder inbox = store.getFolder("Inbox");
 			inbox.open(Folder.READ_WRITE);
 			// Message messages[] = inbox.getMessages();
 			//TODO:the the below function
+			System.out.println("...Reading emails");
 			getJoinRequestsAndAdd(inbox);
 			String input = "";
 			while (!(input.equals("end") || input.equals("exit"))) {
@@ -320,7 +321,7 @@ public static Object[][] getMemberDataForGUI() {
 	
 	for(int i=0; i < members.size(); i++){
 		data[i][0] = members.elementAt(i).name;
-		data[i][1] = members.elementAt(1).email;
+		data[i][1] = members.elementAt(i).email;
 		for(int j =0; j < members.elementAt(i).inLists.size()-1; j++){
 			if(members.elementAt(i).inLists.elementAt(j)!=null){
 				System.out.println("members.elementAt(i).inLists.elementAt(j)"+members.elementAt(i).inLists.elementAt(j));
@@ -406,7 +407,7 @@ public static Object[][] getMemberDataForGUI() {
 
 		try {
 			myFileWriter = new FileWriter(
-					"C:\\Users\\Calvin\\workspace\\GmailImap\\src\\" + list.name + ".txt", true);
+					"src/lists/" + list.name + ".txt", true);
 			myFileWriter.write('\n');
 			myFileWriter.write(email + " " + name);
 			myFileWriter.close();
@@ -417,7 +418,7 @@ public static Object[][] getMemberDataForGUI() {
 		}
 	}
 
-	private static void deleteFromList(EmailList list, String email, Boolean forceDelete) {
+	public static void deleteFromList(EmailList list, String email, Boolean forceDelete) {
 		//TODO deleteFromList is not deleting from file
 		String content = "delete " + list.name + " " + list.password + " " + email;
 		try {

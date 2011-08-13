@@ -40,7 +40,7 @@ public class EmailList {
 		if (name.equals(".svn"))
 			return;
 		if(!foundList){
-			System.out.println("ERROR:list "+name+" Not Found");
+			System.out.println("WARNING:list "+name+" not found. Creating list "+name+".txt");
 			File file = new File("src/lists/"+name+".txt");
 			boolean blnCreated = false;
 		     try

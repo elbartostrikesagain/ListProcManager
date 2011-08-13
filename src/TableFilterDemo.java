@@ -114,12 +114,12 @@ public class TableFilterDemo extends JPanel {
                 });
         l1.setLabelFor(filterText);
         form.add(filterText);
-        JLabel l2 = new JLabel("Status:", SwingConstants.TRAILING);
-        form.add(l2);
-        statusText = new JTextField();
-        l2.setLabelFor(statusText);
-        form.add(statusText);
-        SpringUtilities.makeCompactGrid(form, 2, 2, 6, 6, 6, 6);
+//        JLabel l2 = new JLabel("Status:", SwingConstants.TRAILING);
+//        form.add(l2);
+//        statusText = new JTextField();
+//        l2.setLabelFor(statusText);
+//        form.add(statusText);
+        SpringUtilities.makeCompactGrid(form, 1, 2, 6, 6, 6, 6);
         add(form);
     }
 
@@ -224,7 +224,11 @@ public class TableFilterDemo extends JPanel {
             String email = (String) this.data[row][1];
             String name = (String) this.data[row][0];
             EmailList list = InboxReader.findList(this.columnNames[col]);
-            InboxReader.addToList(list, email, name, false);
+            if ((Boolean) value)
+            	InboxReader.addToList(list, email, name, true);
+            else
+            	InboxReader.deleteFromList(list, email, true);
+            
             if (DEBUG) {
                 System.out.println("New value of data:");
                 printDebugData();

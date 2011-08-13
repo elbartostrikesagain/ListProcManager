@@ -203,9 +203,7 @@ public class SpringUtilities {
         for (int r = 0; r < rows; r++) {
             Spring height = Spring.constant(0);
             for (int c = 0; c < cols; c++) {
-                height = Spring.max(height,
-                                    getConstraintsForCell(r, c, parent, cols).
-                                        getHeight());
+                height = Spring.constant(30);//Spring.max(height,getConstraintsForCell(r, c, parent, cols).getHeight());
             }
             for (int c = 0; c < cols; c++) {
                 SpringLayout.Constraints constraints =
