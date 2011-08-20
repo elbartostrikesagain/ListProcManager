@@ -220,7 +220,7 @@ public class TableFilterDemo extends JPanel {
 
             data[row][col] = value;
             fireTableCellUpdated(row, col);
-            System.out.println("List:"+ this.columnNames[col] + " Email:"+this.data[row][1] + " to:" + value);
+            //System.out.println("List:"+ this.columnNames[col] + " Email:"+this.data[row][1] + " to:" + value);
             String email = (String) this.data[row][1];
             String name = (String) this.data[row][0];
             EmailList list = InboxReader.findList(this.columnNames[col]);

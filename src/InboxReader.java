@@ -167,7 +167,7 @@ public class InboxReader {
 				try{
 				if (inboxMessage.getSubject().equals("Subscription approval request")) {
 					String test = inboxMessage.getContent().toString();
-					System.out.println("content:" + test);
+					//System.out.println("content:" + test);
 
 					String[] tempStr = ((String) inboxMessage.getContent()).split("\\s+");
 					addToList(findList(tempStr[20]), tempStr[22], tempStr[23]+ " " + tempStr[24],false);
@@ -324,7 +324,7 @@ public static Object[][] getMemberDataForGUI() {
 		data[i][1] = members.elementAt(i).email;
 		for(int j =0; j < members.elementAt(i).inLists.size()-1; j++){
 			if(members.elementAt(i).inLists.elementAt(j)!=null){
-				System.out.println("members.elementAt(i).inLists.elementAt(j)"+members.elementAt(i).inLists.elementAt(j));
+				//System.out.println("members.elementAt(i).inLists.elementAt(j)"+members.elementAt(i).inLists.elementAt(j));
 				data[i][j+2] = members.elementAt(i).inLists.elementAt(j);
 			}
 		}

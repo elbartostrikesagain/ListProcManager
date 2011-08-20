@@ -12,3 +12,6 @@ This was a large hackfest, code is terrible not complete but it works. I'll make
 	ListProcEmail listproc@lists.yourServerHere.edu
 	//The following will also add uses to test2 automatically
 	AlsoAddTo test2 
+	
+---Known Bugs
+	*Removing a user via the gui sends the email but doesn't remove them from the text doc
