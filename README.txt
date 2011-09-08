@@ -1,5 +1,11 @@
 This was a large hackfest, code is terrible not complete but it works. I'll make a readme if anyone is interseted.
 
+Setup(eclipse)
+1. Create a new java project
+2. File => Import => File System
+3. Click the lightbulb by the build errors and chose the bottom option about fixing build path something something
+
+
 ---Sample config file setup
 	//This file is not used, it is just for demo purposes
 	//use a double slash to comment in a config file
