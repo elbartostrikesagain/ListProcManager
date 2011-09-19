@@ -247,8 +247,9 @@ public class InboxReader {
 	private static void bulkImport(String fileName, String list) {
 		// TODO Auto-generated method stub
 		String line;
-		File file = new File("C:\\Users\\Calvin\\workspace\\GmailImap\\src\\"
-				+ fileName + ".txt");
+		//File file = new File("C:\\Users\\Calvin\\workspace\\GmailImap\\src\\"
+		//		+ fileName + ".txt");
+		File file = new File("src/" + fileName + ".txt");
 		FileInputStream fis = null;
 		BufferedInputStream bis = null;
 		DataInputStream dis = null;
@@ -268,7 +269,7 @@ public class InboxReader {
 				line = dis.readLine();
 				String[] temp = null;
 				temp = line.split(" ");
-				addToList(findList(list), temp[0], temp[1] + temp[2], true);
+				addToList(findList(list), temp[0], temp[1] + " " + temp[2], true);
 			}
 
 			// dispose all the resources after using them.
